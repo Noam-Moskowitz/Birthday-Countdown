@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: lightpink;
+    background-image: url(./images/balloons-birthday-svgrepo-com.svg);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: top;
+    background-size: 30vh;
+}
+
 .countdown {
     margin: 5vh auto;
     width: 50vw;
@@ -17,7 +26,13 @@
     text-align: center;
     font-family: orbitron;
     font-size: 4rem;
+    color: black;
     border: none;
+    background-color: lightpink;
+    background-image: url(./images/party-confetti-svgrepo-com.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 10vh;
 }
 
 .titles-container {
@@ -32,7 +47,8 @@
 }
 
 #clues {
-    border: 1px solid #000;
+    border: 5px solid #000;
+    border-radius: 20px;
     width: 45vw;
     height: 55vh;
     margin: 0 auto;
@@ -40,6 +56,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: pink;
+    background-image: url(./images/gifts-svgrepo-com.svg);
+    background-repeat: no-repeat;
+    background-size: 10vh;
+    background-position-x: center;
+    background-position-y: bottom;
 }
 
 #clues-h1 {
@@ -51,6 +73,7 @@
     text-align: center;
     border: none;
     font-family: orbitron;
+    background-color: pink;
 }
 
 .guess-container {
@@ -62,17 +85,34 @@
     align-items: center;
     justify-content: space-around;
     padding-top: 5vh;
+    background-image: url(./images/birthday-cake-cake-svgrepo-com.svg);
+    background-size: 10vh;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: right;
 }
 
 #guess {
     font-size: 1.2rem;
     text-align: center;
+    background-image: url(./images/confetti-svgrepo-com.svg);
+}
+
+#guess:focus {
+    background-image: none;
 }
 
 #guess-submit {
     font-size: 1.1rem;
     padding: 5px;
     border-radius: 10px;
+    background-color: rgb(252, 179, 191);
+    border: 3px solid #000;
+}
+
+#guess-submit:hover {
+    cursor: pointer;
+    background-color: pink;
 }
 
 @media (max-width: 1350px) {
@@ -120,6 +160,12 @@
 }
 
 @media (max-width: 450px) {
+    body {
+        background-position-x: left;
+        background-position-y: bottom;
+        background-size: 10vh;
+    }
+
     .title {
         font-size: .9rem;
     }
@@ -130,6 +176,8 @@
 
     #timer {
         font-size: 2rem;
+        width: 100vw;
+        background-size: 4vh;
     }
 
     #clues {
@@ -143,5 +191,7 @@
 
     .guess-container {
         padding-top: 20px;
+        width: 80vw;
+        background-size: 5vh;
     }
 }
