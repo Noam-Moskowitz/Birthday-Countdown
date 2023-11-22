@@ -103,6 +103,7 @@ body {
 }
 
 #guess-submit {
+    color: black;
     font-size: 1.1rem;
     padding: 5px;
     border-radius: 10px;
