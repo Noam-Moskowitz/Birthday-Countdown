@@ -1,9 +1,10 @@
 const timer = document.getElementById('timer')
 const countdown = document.getElementById('game-cntdwn')
 const clues = document.getElementById('clues')
+const clueContainer = document.getElementById('clue-cntainer');
 const guess = document.getElementById('guess');
 const guessSubmit = document.getElementById('guess-submit');
-const guessdate = new Date().getDay();
+const guessdate = new Date().getDate();
 const guessMonth = new Date().getMonth() + 1;
 const birthDay = {
     month: 1,
@@ -19,39 +20,37 @@ const gameStart = {
     minutes: 60,
     seconds: 60
 }
-const answer = ['daschund', 'second dog', 'another dog', 'puppy', 'a puupy', 'dog', 'a dog'];
+const answer = ['uggs', 'mini uggs', 'high platform uggs', 'brown uggs'];
 
 setInterval(updatedDate, 1000);
-guess.addEventListener("keyup", function (event) {
-    if (event.key == 'Enter') {
-        if (guess.value.trim() != "") {
-            if (guessMonth == 1 && guessdate >= 5 && guessdate <= 12) {
-                allowGuess();
-            } else {
-                document.getElementById('clues-h1').innerHTML = "You can only guess in:"
-            }
-        }
-    }
-})
-guessSubmit.addEventListener("click", function () {
+
+function checkDate() {
     if (guess.value.trim() != "") {
-        if (guessMonth == 1 && guessdate <= 5 && guessdate >= 12) {
+        if (guessMonth == 1 && guessdate >= 5 && guessdate <= 12) {
             allowGuess();
         } else {
             document.getElementById('clues-h1').innerHTML = "You can only guess in:"
+            guess.value = '';
         }
     }
+}
+guess.addEventListener("keyup", function (event) {
+    if (event.key == 'Enter') {
+        checkDate();
+    }
 })
+guessSubmit.addEventListener("click", checkDate)
 
 function result() {
-    const plyrInput = String(guess.value.toLowerCase());
+    const plyrInput = String(guess.value.toLowerCase().trim());
     for (x = 0; x < answer.length; x++) {
-        if (plyrInput == answer[x]) {
-            clues.innerHTML = "you win"
+        if (plyrInput == answer[x].trim()) {
+            clues.innerHTML = "you guessed correctly!"
             return;
         } else {
-            clues.innerHTML = "you lose"
+            clues.innerHTML = "your guess was incorrect!"
         }
+        guess.value = '';
     }
 }
 function updatedDate() {
@@ -138,49 +137,8 @@ function updatedDate() {
         gamedayscount = "00";
     }
     let fullGameCount = gamemonthscount + " " + gamedayscount + " " + gamehourscount + ":" + gameminutescount + ":" + gamesecondscount;
-    /*  if (monthscount < 1 && date >= 5) {
-         document.getElementById('clues-h1').style.display = 'none';
-         fullGameCount = gamehourscount + ":" + gameminutescount + ":" + gamesecondscount;
-     } else { */
     countdown.value = fullGameCount;
-    /*   } */
-    switch (dayscount) {
-        case "0" + 6:
-            countdown.style.display = 'none';
-            document.getElementById('clues-h1').style.display = 'none';
-            clues.innerHTML = "First Hint";
-            break;
-        case "0" + 5:
-            countdown.style.display = 'none';
-            document.getElementById('clues-h1').style.display = 'none';
-            clues.innerHTML = "2 Hint";
-            break;
-        case "0" + 4:
-            countdown.style.display = 'none';
-            document.getElementById('clues-h1').style.display = 'none';
-            clues.innerHTML = "3 Hint";
-            break;
-        case "0" + 3:
-            countdown.style.display = 'none';
-            document.getElementById('clues-h1').style.display = 'none';
-            clues.innerHTML = "4 Hint";
-            break;
-        case "0" + 2:
-            countdown.style.display = 'none';
-            document.getElementById('clues-h1').style.display = 'none';
-            clues.innerHTML = "5 Hint";
-            break;
-        case "0" + 1:
-            countdown.style.display = 'none';
-            document.getElementById('clues-h1').style.display = 'none';
-            clues.innerHTML = "6 Hint";
-            break;
-        case "0" + 0:
-            countdown.style.display = 'none';
-            document.getElementById('clues-h1').style.display = 'none';
-            clues.innerHTML = "7 Hint";
-            break;
-    }
+
 };
 function hasGuessedToday() {
     const lastGuess = localStorage.getItem('lastGuess');
@@ -206,3 +164,54 @@ function allowGuess() {
         recordGuess();
     }
 }
+function hints() {
+    let d = new Date();
+    let day = d.getDate();
+    let month = d.getMonth() + 1;
+    let date = String(day + ' ' + month);
+    switch (date) {
+        case '6 1':
+            countdown.style.display = 'none';
+            document.getElementById('clues-h1').style.display = 'none';
+            clueContainer.innerHTML = '<img src="./images/snowflake.png" >';
+            clueContainer.classList.add('clue')
+            break;
+        case '7 1':
+            countdown.style.display = 'none';
+            document.getElementById('clues-h1').style.display = 'none';
+            clueContainer.innerHTML = '<img src="./images/furr.jpg">';
+            clueContainer.classList.add('clue')
+            break;
+        case '8 1':
+            countdown.style.display = 'none';
+            document.getElementById('clues-h1').style.display = 'none';
+            clues.innerHTML = '<img src="./images/uglyMan.jpg" >';
+            clueContainer.classList.add('clue')
+            break;
+        case '9 1':
+            countdown.style.display = 'none';
+            document.getElementById('clues-h1').style.display = 'none';
+            clueContainer.innerHTML = '<img src="./images/brown.png" >';
+            clueContainer.classList.add('clue')
+            break;
+        case '10 1':
+            countdown.style.display = 'none';
+            document.getElementById('clues-h1').style.display = 'none';
+            clueContainer.innerHTML = '<img src="./images/shoes.jpg" >';
+            clueContainer.classList.add('clue')
+            break;
+        case '11 1':
+            countdown.style.display = 'none';
+            document.getElementById('clues-h1').style.display = 'none';
+            clueContainer.innerHTML = '<img src="./images/GG.png" >';
+            clueContainer.classList.add('clue')
+            break;
+        case '12 1':
+            countdown.style.display = 'none';
+            document.getElementById('clues-h1').style.display = 'none';
+            clueContainer.innerHTML = '<img src="./images/uggslippers.png" >';
+            clueContainer.classList.add('clue')
+            break;
+    }
+}
+hints();

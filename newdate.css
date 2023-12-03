@@ -76,6 +76,7 @@ body {
     background-color: pink;
 }
 
+
 .guess-container {
     margin: 0 auto;
     width: 30vw;
@@ -91,6 +92,19 @@ body {
     background-position-y: bottom;
     background-position-x: right;
 }
+
+.clue {
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 100%;
+}
+
+
 
 #guess {
     font-size: 1.2rem;
