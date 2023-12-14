@@ -97,7 +97,7 @@ function updatedDate() {
         monthscount = '00';
         dayscount = "0" + (birthDay.day - date - 1);
     }
-    if (date >= 13 && monthscount < 1) {
+    if (date >= 13 && monthscount == 1) {
         monthscount = '00';
         dayscount = '00';
         hourscount = '00';
