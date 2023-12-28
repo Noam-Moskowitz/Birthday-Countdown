@@ -46,6 +46,7 @@ function result() {
     for (x = 0; x < answer.length; x++) {
         if (plyrInput == answer[x].trim()) {
             clues.innerHTML = "you guessed correctly!"
+            guess.value = '';
             return;
         } else {
             clues.innerHTML = "your guess was incorrect!"
